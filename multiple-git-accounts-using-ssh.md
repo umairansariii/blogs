@@ -42,3 +42,18 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 - When prompted for the file name to save the key, specify a unique name `id_ed25519_personal`.
 - Set passphrase for SSH key for an extra layer of security.
+
+### Add SSH keys
+Start the SSH agent and add your key files.
+```bash
+eval $(ssh-agent)
+ssh-add ~/.ssh/id_ed25519_personal
+ssh-add ~/.ssh/id_ed25519_work
+```
+### Add SSH keys to GitHub
+Copy the public keys and add them to the corresponding Git accounts.
+```bash
+cat ~/.ssh/id_ed25519_personal.pub
+cat ~/.ssh/id_ed25519_work.pub
+```
+- Go to GitHub → Settings → SSH and GPG keys → New SSH key and add the keys.
