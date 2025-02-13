@@ -34,3 +34,11 @@ Permanently delete SSH keys from your local machine.
 rm ~/.ssh/id_ed25519
 rm ~/.ssh/id_ed25519.pub
 ```
+### Generate SSH keys
+Generate new SSH keys for each account like `personal` or `work`.
+```bash
+cd ~/.ssh
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- When prompted for the file name to save the key, specify a unique name `id_ed25519_personal`.
+- Set passphrase for SSH key for an extra layer of security.
