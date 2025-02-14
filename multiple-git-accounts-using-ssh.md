@@ -82,3 +82,20 @@ Host github-work
     AddKeysToAgent yes
     IdentitiesOnly yes
 ```
+### Test SSH connection
+Test the SSH connection using custom aliases.
+```bash
+ssh -T git@github-personal
+ssh -T git@github-work
+```
+- If configured correctly, you should see `Hi username! You've successfully authenticated`.
+
+### Setup Git remotes
+You can now use the aliases when cloning repositories.
+```bash
+git clone git@github-personal:username/repo-name.git
+```
+Or update existing remotes.
+```bash
+git remote set-url origin git@github-work:username/repo-name.git
+```
