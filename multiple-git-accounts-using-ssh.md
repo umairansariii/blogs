@@ -40,7 +40,7 @@ Generate new SSH keys for each account like `personal` or `work`.
 cd ~/.ssh
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
-- When prompted for the file name to save the key, specify a unique name `id_ed25519_personal`.
+- When prompted for the file name, specify a unique name `id_ed25519_personal`.
 - Set passphrase for SSH key for an extra layer of security.
 
 ### Add SSH keys
@@ -57,3 +57,28 @@ cat ~/.ssh/id_ed25519_personal.pub
 cat ~/.ssh/id_ed25519_work.pub
 ```
 - Go to GitHub → Settings → SSH and GPG keys → New SSH key and add the keys.
+
+### Configure SSH config
+Update the SSH config file located at `~/.ssh/config`, if it doesn't exist, create it.
+```bash
+touch ~/.ssh/config
+code ~/.ssh/config
+```
+Add configuration for each host.
+```plain
+# Personal GitHub Account
+Host github-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_personal
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+
+# Work GitHub Account
+Host github-work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_work
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+```
